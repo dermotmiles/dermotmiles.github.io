@@ -1,0 +1,66 @@
+<!DOCTYPE html
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Go Big</title>
+</head>
+<body>
+    <h1>Numbers Go Big</h1>
+    <div id="buttonContainer"></div>
+    <p id="demo"></p>
+
+    <script>
+        var x = 1
+        var y = 1
+        var z = 1
+        document.getElementById("demo").innerHTML = x + `
+         -- Level:
+        ` + z;
+        function increaseX() {
+            x = x + y
+            document.getElementById("demo").innerHTML = x + `
+             -- Level:
+            ` + z;
+        }
+
+        function increaseY() {
+            y = y + z
+            button1.innerText = '+' + y;
+        }
+
+        function reset() {
+            if (x>=100*z) {
+                x = 1;
+                y = 1;
+                z += 1;
+                document.getElementById("demo").innerHTML = x;
+                button1.innerText = '+' + y;
+                button2.innerText = '+' + z;
+                button3.innerText = 'Prestige ('+ 100*z + ' required)';
+                document.getElementById("demo").innerHTML = x + `
+                 -- Level:
+                ` + z;
+            }}
+
+
+        function createButton(id, text, onClickFunction) {
+            const button = document.createElement('button');
+            button.id = id;
+            button.innerText = text;
+            button.onclick = onClickFunction;
+            return button;
+        }
+
+        const button1 = createButton('x', '+'+ y, increaseX);
+        const button2 = createButton('y', '+'+ z, increaseY);
+        const button3 = createButton('reset', 'Prestige ('+ 100*z + ' required)', reset);
+
+
+        const buttonContainer = document.getElementById('buttonContainer');
+        buttonContainer.appendChild(button1);
+        buttonContainer.appendChild(button2);
+        buttonContainer.appendChild(button3);
+    </script>
+</body>
+</html>
